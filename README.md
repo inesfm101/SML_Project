@@ -1,74 +1,28 @@
-# Bike Demand Prediction for Capital Bikeshare
+## Bicycle Demand Prediction for Capital Bikeshare at Uppsala University
 
-## Project Overview
+This project uses machine learning to predict bike demand for the Capital Bikeshare program. The goal is to determine whether an increase in the number of bicycles is needed based on various features like weather, time of day, and day of the week.
 
-This project tackles the challenge of predicting bike demand for Capital Bikeshare, a public bicycle-sharing system in Washington, D.C.. The project focuses on **building a classification model** to predict whether the District Department of Transportation (DDOT) should increase the number of bikes available at a specific hour. The goal is to **prevent bike shortages**, encouraging bicycle use and minimizing reliance on cars, thereby reducing CO2 emissions. 
+**Project Highlights:**
 
-## Data
-
-### Dataset
-
-The project utilizes the "training.csv" dataset, consisting of **1600 randomly selected hourly observations** spanning the past three years in Washington, D.C..
-
-### Features
-
-The dataset encompasses a variety of temporal and meteorological features used to predict bike demand, including:
-
-*   Date and time
-*   Weather conditions
-*   Temperature
-*   Humidity
-*   Windspeed
-
-### Target Variable
-
-The target variable, "increase\_stock," is a binary classification indicating whether an increase in the number of bikes is necessary ("high\_bike\_demand") or not ("low\_bike\_demand").
-
-## Methodology
-
-### 1. Data Preprocessing
-
-*   **Initial inspection:** The dataset was loaded and checked for missing values. **No missing values were found**, eliminating the need for imputation.
-*   **Feature removal:** The "snow" column was found to have only one unique value (0), indicating it was constant and would not contribute to the model. Therefore, it was dropped.
-
-### 2. Data Exploration
-
-*   **Feature inspection:** Numerical variables (e.g., temperature, humidity) and categorical variables (e.g., weather condition) were identified.
-*   **Visualizations:** Plots, such as histograms and scatterplots, were used to understand the relationships between features and the target variable.
-*   **Class imbalance check:** An assessment was performed to determine whether the classes (high bike demand vs. low bike demand) were balanced or imbalanced. Imbalance may require techniques like oversampling or undersampling.
-
-### 3. Feature Engineering
-
-*   **Rush hour feature:** A binary feature indicating rush hour periods (7 AM - 9 AM and 4 PM - 6 PM) was engineered.
-*   **Season feature:** A categorical feature representing the four seasons was derived from the "month" feature.
-
-### 4. Model Development and Tuning
-
-*   **Required methods:** :
+*   **Dataset:** The project utilizes a dataset of 1600 observations with 16 features related to bike rentals in Washington D.C.
+*   **Target Variable:**  The target variable is a binary indicator (`increase_stock`), representing high (1) or low (0) bike demand.
+*   **Data Exploration and Preprocessing:**
+    *   Analysis of class imbalance and feature correlations.
+    *   Feature engineering and data cleaning.
+*   **Models Implemented:**
+    *   Naive Random Model
     *   Logistic Regression
-    *   Discriminant analysis (LDA, QDA)
-    *   K-nearest neighbor
-    *   Tree-based methods (classification trees, random forests, bagging)
-    *   Boosting
-*   **Naive baseline model:** A naive classification model, always predicting high or low demand or random labels, served as a benchmark.
-*   **Method exploration:** For each chosen method:
-    *   Implementation using Python, with the option to write custom code or use packages.
-    *   Hyperparameter tuning for optimal performance, potentially using methods like grid search or random search.
-    *   Performance evaluation using techniques like cross-validation.
-*   **Feature selection (optional):** Exploration of using all features, a subset, or a combination of features. New features could be created to enhance model performance.
+    *   Random Forest
+    *   Forest Tree
+    *   K-Nearest Neighbors 
+    *   AdaBoost Classifier 
+*   **Model Evaluation:**
+    *   Models were evaluated using metrics like ROC-AUC, precision, recall, and F1-score.
+    *   Hyperparameter tuning was performed for each model to optimize performance.
+*   **Best Performing Model:** The **AdaBoost Classifier** was identified as the most suitable model for predicting bike demand.
 
-### 5. Model Selection and Comparison
+**Key Findings:**
 
-*   **Unified pre-processing:** Data pre-processing steps were standardized across all methods before training.
-*   **Metric selection:** One or more metrics, such as accuracy, F1-score, recall, precision, etc., were chosen for model evaluation.
-*   **Model comparison:** Tuned models were compared using a separate and consistent test set to determine the "best" model for the task.
-
-## Conclusion
-
-The project demonstrated the application of machine learning for predicting bike demand in a real-world scenario. By accurately forecasting demand, DDOT can optimize bike availability, encourage cycling, and contribute to a more sustainable transportation system in Washington, D.C.
-
-## Future Work
-
-*   Explore more advanced machine learning techniques, such as deep neural networks (DNNs).
-*   Investigate the impact of incorporating real-time data feeds, like current weather conditions or social media trends, on model accuracy.
-*   Develop a web application or dashboard to visualize predictions and provide insights to DDOT and the public. 
+*   The project successfully developed and evaluated multiple machine learning models for bike demand prediction.
+*   The AdaBoost Classifier achieved the **best performance**, demonstrating its effectiveness in binary classification tasks. 
+*   Feature selection techniques were used to identify the most important features for predicting bike demand.
